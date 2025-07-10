@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: weather-web
+    name: weather-web-app # Tên ứng dụng của bạn
     env: python
-    buildCommand: ""
-    startCommand: "python app.py"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
     envVars:
-      - key: PORT
-        value: 5000
+      - key: OPENWEATHER_API_KEY
+        sync: false # Chúng ta sẽ đặt key này trên web Render
